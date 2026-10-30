@@ -160,6 +160,7 @@ st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 with st.sidebar:
     st.markdown("### 💎 Crystallytics")
     st.caption("v1.0 • Standards-Compliant Data Intelligence")
+    st.caption("⚡ *Powered by Google Antigravity & Gemini*")
     st.markdown("---")
 
     st.subheader("⚙️ AI Configuration")
@@ -196,6 +197,7 @@ st.markdown(
     <span class="badge badge-iso">ISO/IEC 25010 Quality Model</span>
     <span class="badge badge-sec">ISO/IEC 27001 Zero-Retention</span>
     <span class="badge badge-ai">Grounded AI • Zero Hallucinations</span>
+    <span class="badge" style="background-color: #E8F0FE; color: #1A73E8; border: 1px solid #AECBFA;">⚡ Built with Google Antigravity</span>
     """,
     unsafe_allow_html=True,
 )

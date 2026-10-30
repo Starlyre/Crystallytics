@@ -1,6 +1,12 @@
 # Crystallytics 💎
 **Crystal-Clear, Context-Aware Automated Data Analytics**
 
+[![Python 3.11](https://img.shields.io/badge/Python-3.11-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.66-FF4B4B?style=flat&logo=streamlit&logoColor=white)](https://streamlit.io/)
+[![Google Antigravity](https://img.shields.io/badge/Engineered%20With-Google%20Antigravity-4285F4?style=flat&logo=google&logoColor=white)](https://deepmind.google)
+[![ISO 25010](https://img.shields.io/badge/Architecture-ISO%2FIEC%2025010-059669?style=flat)](https://www.iso.org/standard/35733.html)
+[![Tests Passing](https://img.shields.io/badge/Tests-15%2F15%20Passed-10B981?style=flat&logo=pytest&logoColor=white)](https://docs.pytest.org/)
+
 > **Crystallytics** blends *crystallize* (bringing absolute clarity out of messy raw data), *tally* (rigorous, verifiable mathematical calculation by Python), and *analytics* (automated profiling, interactive visualizations, and AI narratives).
 
 Crystallytics bridges the gap between raw datasets and executive understanding. It allows users to upload Excel or CSV files and instantly receive verified statistical calculations, context-aware visual charts, and reliable AI-generated narrative interpretations.
@@ -92,3 +98,11 @@ Open `http://localhost:8501` in your browser.
 python -m pytest
 ```
 All 15 tests should pass.
+
+---
+
+## 🛠️ Engineering & Acknowledgements
+
+- **Development Environment:** Architected and developed with **Google Antigravity** (Google DeepMind's advanced agentic coding environment).
+- **Standards Conformance:** Formally aligns with ISO/IEC/IEEE 12207, 90003, 25010, 27001, and 26514 (documented in [`docs/SOFTWARE_DESIGN_ISO.md`](docs/SOFTWARE_DESIGN_ISO.md)).
+- **Core Stack:** Python 3.11, Pandas, NumPy, Plotly Express, Streamlit, Pydantic, and Google Gemini API.
