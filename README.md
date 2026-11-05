@@ -51,13 +51,22 @@ Crystallytics bridges the gap between raw datasets and executive understanding. 
 ```text
 Crystallytics/
 │
+├── index.html            # Main HTML5 web application
+├── css/
+│   └── style.css         # Modern, responsive CSS design
+├── js/
+│   ├── app.js            # Main UI controller & file ingestion
+│   ├── profiler.js       # In-browser statistical profiling & IQR outlier detection
+│   ├── charts.js         # Chart.js visualization recommender
+│   └── ai_interpreter.js # Verified AI narrative generator & Gemini REST client
+│
 ├── src/
 │   ├── __init__.py
-│   ├── data_loader.py        # Safe ingestion & encoding handling
-│   ├── data_profiler.py      # Statistical profiling & data quality checks
-│   ├── visualization.py      # Automated chart recommendation & Plotly rendering
-│   ├── context_analyzer.py   # Domain inference & domain-specific analytics
-│   └── ai_interpreter.py     # Pydantic schema & Gemini LLM interpretation layer
+│   ├── data_loader.py    # Python safe ingestion & encoding handling
+│   ├── data_profiler.py  # Python statistical profiling & data quality checks
+│   ├── visualization.py  # Python Plotly chart recommender
+│   ├── context_analyzer.py # Domain inference & domain-specific analytics
+│   └── ai_interpreter.py # Pydantic schema & Gemini LLM interpretation layer
 │
 ├── tests/
 │   ├── test_data_loader.py
@@ -70,7 +79,7 @@ Crystallytics/
 │   ├── sample_sales.csv
 │   └── sample_sales.xlsx
 │
-├── app.py                    # Streamlit dashboard
+├── app.py                # Streamlit dashboard
 ├── requirements.txt
 ├── .gitignore
 └── README.md
@@ -80,15 +89,20 @@ Crystallytics/
 
 ## 🚀 Quick Start
 
-### 1. Activate the Virtual Environment
-In Windows PowerShell:
+You can run **Crystallytics** in two ways:
+
+### Option A: Modern Web Edition (HTML5, CSS3, JavaScript) — *Zero Install*
+Simply open [`index.html`](index.html) in any modern web browser, or serve it locally:
+
+```powershell
+python -m http.server 8000
+```
+Then visit `http://localhost:8000` in your browser.
+
+### Option B: Python Streamlit Edition
 ```powershell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 .\.venv\Scripts\Activate.ps1
-```
-
-### 2. Run the Application
-```powershell
 python -m streamlit run app.py
 ```
 Open `http://localhost:8501` in your browser.
