@@ -1,0 +1,37 @@
+TransactionID,Date,Category,Product,UnitPrice,Quantity,Discount,TotalAmount,Region,PaymentMethod
+TRX-5000,2024-01-01,Accessories,Wireless Mouse,29.99,7,0.1,188.94,Latin America,Credit Card
+TRX-5001,2024-01-04,Electronics,Mechanical Keyboard,89.99,2,0.1,161.98,Asia-Pacific,Apple Pay
+TRX-5002,2024-01-07,Accessories,Wireless Mouse,29.99,4,0.1,107.96,Europe,Credit Card
+TRX-5003,2024-01-10,Office Furniture,Standing Desk Pro,489.0,6,0.05,2787.3,Latin America,Wire Transfer
+TRX-5004,2024-01-13,Electronics,Noise Cancelling Headphones,149.99,4,0.05,569.96,Europe,Credit Card
+TRX-5005,2024-01-16,Electronics,Noise Cancelling Headphones,149.99,3,0.1,404.97,Asia-Pacific,PayPal
+TRX-5006,2024-01-19,Accessories,USB-C Docking Station,79.99,6,0.1,431.95,Latin America,Apple Pay
+TRX-5007,2024-01-22,Electronics,Mechanical Keyboard,89.99,5,0.1,404.95,Asia-Pacific,Credit Card
+TRX-5008,2024-01-25,Electronics,Mechanical Keyboard,89.99,2,0.15,152.98,North America,Wire Transfer
+TRX-5009,2024-01-28,Office Furniture,Standing Desk Pro,489.0,2,0.0,978.0,Europe,Credit Card
+TRX-5010,2024-01-31,Office Furniture,Desk Lamp LED,39.5,4,0.15,134.3,North America,Wire Transfer
+TRX-5011,2024-02-03,Accessories,Webcam 1080p,59.99,6,0.0,359.94,Latin America,PayPal
+TRX-5012,2024-02-06,Office Furniture,Standing Desk Pro,489.0,6,0.05,2787.3,Latin America,PayPal
+TRX-5013,2024-02-09,Electronics,Mechanical Keyboard,89.99,2,0.05,170.98,Latin America,PayPal
+TRX-5014,2024-02-12,Office Furniture,Standing Desk Pro,489.0,4,0.15,1662.6,North America,PayPal
+TRX-5015,2024-02-15,Electronics,Noise Cancelling Headphones,149.99,2,0.2,239.98,Latin America,PayPal
+TRX-5016,2024-02-18,Electronics,Noise Cancelling Headphones,149.99,1,0.2,119.99,Asia-Pacific,Credit Card
+TRX-5017,2024-02-21,Electronics,Noise Cancelling Headphones,149.99,7,0.0,1049.93,Latin America,Credit Card
+TRX-5018,2024-02-24,Accessories,Webcam 1080p,59.99,3,0.0,179.97,Latin America,Apple Pay
+TRX-5019,2024-02-27,Accessories,Wireless Mouse,29.99,3,0.2,71.98,Europe,Apple Pay
+TRX-5020,2024-03-01,Office Furniture,Ergonomic Mesh Chair,229.0,4,0.0,916.0,Latin America,Wire Transfer
+TRX-5021,2024-03-04,Office Furniture,Ergonomic Mesh Chair,229.0,7,0.2,1282.4,Asia-Pacific,Wire Transfer
+TRX-5022,2024-03-07,Office Furniture,Desk Lamp LED,39.5,3,0.0,118.5,Asia-Pacific,Credit Card
+TRX-5023,2024-03-10,Accessories,USB-C Docking Station,79.99,3,0.0,239.97,North America,PayPal
+TRX-5024,2024-03-13,Accessories,Webcam 1080p,59.99,6,0.1,323.95,North America,Apple Pay
+TRX-5025,2024-03-16,Accessories,USB-C Docking Station,79.99,2,0.15,135.98,North America,Apple Pay
+TRX-5026,2024-03-19,Accessories,Webcam 1080p,59.99,1,0.15,50.99,North America,Wire Transfer
+TRX-5027,2024-03-22,Office Furniture,Ergonomic Mesh Chair,229.0,7,0.2,1282.4,Asia-Pacific,Apple Pay
+TRX-5028,2024-03-25,Electronics,Noise Cancelling Headphones,149.99,7,0.1,944.94,Asia-Pacific,PayPal
+TRX-5029,2024-03-28,Office Furniture,Standing Desk Pro,489.0,5,0.0,2445.0,North America,PayPal
+TRX-5030,2024-03-31,Office Furniture,Standing Desk Pro,489.0,3,0.05,1393.65,Asia-Pacific,Wire Transfer
+TRX-5031,2024-04-03,Electronics,Mechanical Keyboard,89.99,6,0.0,539.94,North America,Credit Card
+TRX-5032,2024-04-06,Accessories,USB-C Docking Station,79.99,1,0.15,67.99,North America,Credit Card
+TRX-5033,2024-04-09,Accessories,Webcam 1080p,59.99,6,0.1,323.95,North America,PayPal
+TRX-5034,2024-04-12,Electronics,Noise Cancelling Headphones,149.99,3,0.05,427.47,Latin America,Wire Transfer
+TRX-5035,2024-04-15,Accessories,Webcam 1080p,59.99,6,0.0,359.94,Latin America,Credit Card

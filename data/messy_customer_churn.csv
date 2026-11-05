@@ -1,0 +1,31 @@
+CustomerID,ContractType,TenureMonths,MonthlyCharges,SupportTickets,SatisfactionScore,Churn
+CUST-101,Month-to-Month,1.0,65.5,3,3.2,Yes
+CUST-102, One Year ,12.0,45.0,0,4.5,No
+CUST-103,Two Year,24.0,85.2,1,4.8,No
+CUST-104,Month-to-Month,2.0,70.0,4,2.1,Yes
+CUST-105,Two Year,36.0,95.0,0,4.9,No
+CUST-106,Month-to-Month,6.0,55.4,2,3.8,Yes
+CUST-107, One Year ,18.0,60.1,1,4.2,No
+CUST-108,Month-to-Month,3.0,75.8,5,1.9,Yes
+CUST-109,Two Year,48.0,110.0,0,4.7,No
+CUST-110,Month-to-Month,4.0,40.5,1,3.5,No
+CUST-111, One Year ,14.0,72.0,2,4.0,No
+CUST-112,Two Year,,88.5,0,4.6,No
+CUST-113,Month-to-Month,2.0,,4,2.4,Yes
+CUST-114,Two Year,60.0,99.0,1,4.9,No
+CUST-115,Month-to-Month,5.0,65.0,3,3.1,Yes
+CUST-116, One Year ,22.0,58.2,1,4.3,No
+CUST-117,Month-to-Month,1.0,69.4,6,1.8,Yes
+CUST-118,Two Year,30.0,82.0,0,4.5,No
+CUST-119,Month-to-Month,8.0,50.0,2,3.6,No
+CUST-120, One Year ,16.0,64.5,1,4.1,No
+CUST-102, One Year ,12.0,45.0,0,4.5,No
+CUST-107, One Year ,18.0,60.1,1,4.2,No
+CUST-115,Month-to-Month,5.0,65.0,3,3.1,Yes
+CUST-121,Two Year,42.0,105.0,0,4.8,No
+CUST-122,Month-to-Month,3.0,49.5,3,3.0,Yes
+CUST-123, One Year ,20.0,78.0,1,4.2,No
+CUST-124,Two Year,55.0,92.5,0,4.9,No
+CUST-125,Month-to-Month,,62.0,2,,No
+CUST-126,Two Year,38.0,12500.0,1,4.4,No
+CUST-127,Month-to-Month,9.0,68.0,2,3.7,No
