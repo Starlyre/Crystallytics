@@ -1,11 +1,12 @@
 # Crystallytics 💎
 **Crystal-Clear, Context-Aware Automated Data Analytics**
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-00C6FF?style=flat&logo=github&logoColor=white)](https://starlyre.github.io/Crystallytics/)
 [![Python 3.11](https://img.shields.io/badge/Python-3.11-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.66-FF4B4B?style=flat&logo=streamlit&logoColor=white)](https://streamlit.io/)
 [![Google Antigravity](https://img.shields.io/badge/Engineered%20With-Google%20Antigravity-4285F4?style=flat&logo=google&logoColor=white)](https://deepmind.google)
 [![ISO 25010](https://img.shields.io/badge/Architecture-ISO%2FIEC%2025010-059669?style=flat)](https://www.iso.org/standard/35733.html)
-[![Tests Passing](https://img.shields.io/badge/Tests-15%2F15%20Passed-10B981?style=flat&logo=pytest&logoColor=white)](https://docs.pytest.org/)
+[![Tests Passing](https://img.shields.io/badge/Tests-18%2F18%20Passed-10B981?style=flat&logo=pytest&logoColor=white)](https://docs.pytest.org/)
 
 > **Crystallytics** blends *crystallize* (bringing absolute clarity out of messy raw data), *tally* (rigorous, verifiable mathematical calculation by Python), and *analytics* (automated profiling, interactive visualizations, and AI narratives).
 
@@ -39,10 +40,16 @@ Crystallytics bridges the gap between raw datasets and executive understanding. 
    - Detects the subject domain (e.g. *Sales & Commercial*, *Human Resources*, *Financial*, *Healthcare*, or *General Tabular*).
    - Performs domain-specific calculations (e.g., top contributing product, total revenue volume, compensation benchmarks).
 
-5. **Strictly Grounded AI Interpretations (`src/ai_interpreter.py`)**
-   - **Zero Hallucinations**: Python computes all numbers first. The AI interprets only verified results.
+5. **Strictly Grounded AI Interpretations (`src/ai_interpreter.py` / `js/ai_interpreter.js`)**
+   - **Zero Hallucinations**: Python / JS computes all numbers first. The AI interprets only verified results.
    - **Pydantic Validation**: Structured JSON responses strictly conforming to `DatasetInterpretation`.
    - **Dual-Mode Engine**: Operates seamlessly offline with the built-in deterministic analytics engine, or connects live to Google Gemini 2.5 Flash via optional API key.
+
+6. **1-Click Data Cleaning & Export Engine (`src/data_cleaner.py` / `js/cleaner.js`)**
+   - **Deduplication**: Purges duplicate rows across all dimensions.
+   - **Smart Imputation**: Fills missing numeric values via median/mean and categorical values via mode.
+   - **Outlier Capping**: Winsorizes or filters statistical anomalies using the $1.5 \times \text{IQR}$ rule.
+   - **Export Sanitized File**: 1-click download of cleaned `.csv` datasets and instant re-profiling of the live dashboard.
 
 ---
 
@@ -58,12 +65,14 @@ Crystallytics/
 │   ├── app.js            # Main UI controller & file ingestion
 │   ├── profiler.js       # In-browser statistical profiling & IQR outlier detection
 │   ├── charts.js         # Chart.js visualization recommender
+│   ├── cleaner.js        # 1-Click data cleaning & deduplication engine
 │   └── ai_interpreter.js # Verified AI narrative generator & Gemini REST client
 │
 ├── src/
 │   ├── __init__.py
 │   ├── data_loader.py    # Python safe ingestion & encoding handling
 │   ├── data_profiler.py  # Python statistical profiling & data quality checks
+│   ├── data_cleaner.py   # Python data sanitization & imputation engine
 │   ├── visualization.py  # Python Plotly chart recommender
 │   ├── context_analyzer.py # Domain inference & domain-specific analytics
 │   └── ai_interpreter.py # Pydantic schema & Gemini LLM interpretation layer
@@ -71,6 +80,7 @@ Crystallytics/
 ├── tests/
 │   ├── test_data_loader.py
 │   ├── test_data_profiler.py
+│   ├── test_data_cleaner.py
 │   ├── test_visualization.py
 │   ├── test_context_analyzer.py
 │   └── test_ai_interpreter.py

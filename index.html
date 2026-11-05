@@ -166,6 +166,7 @@
                 <button class="tab-btn active" data-tab="tab-ai">🤖 AI Narrative & Insights</button>
                 <button class="tab-btn" data-tab="tab-viz">📈 Automated Visualizations</button>
                 <button class="tab-btn" data-tab="tab-profile">📋 Data Health & Profiling</button>
+                <button class="tab-btn" data-tab="tab-cleaner">🧹 1-Click Data Cleaning</button>
                 <button class="tab-btn" data-tab="tab-explorer">🔍 Custom Explorer</button>
             </nav>
 
@@ -271,7 +272,84 @@
                 </div>
             </div>
 
-            <!-- TAB 4: CUSTOM EXPLORER -->
+            <!-- TAB 4: DATA CLEANING -->
+            <div class="tab-pane" id="tab-cleaner">
+                <div class="card">
+                    <div class="card-title">🧹 Automated Data Sanitization & Cleaning Recipe</div>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.2rem;">
+                        Configure automated data prep rules to remove anomalies, impute missing cells, and normalize distributions.
+                    </p>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-bottom: 1.5rem;">
+                        <div>
+                            <label class="input-label" style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                <input type="checkbox" id="clean-remove-dupes" checked style="width: 16px; height: 16px;">
+                                <b>Remove Exact Duplicate Rows</b>
+                            </label>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Purges full-row duplicates across all dimensions.</div>
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="clean-impute-strategy">Missing Values Treatment:</label>
+                            <select id="clean-impute-strategy" class="text-input" style="margin-top: 0.3rem;">
+                                <option value="median" selected>Smart Impute (Numeric: Median, Text: Mode)</option>
+                                <option value="mean">Smart Impute (Numeric: Mean, Text: Mode)</option>
+                                <option value="drop">Drop Rows with Any Missing Values</option>
+                                <option value="none">Keep Missing Values As-Is</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="clean-outlier-strategy">1.5×IQR Outlier Treatment:</label>
+                            <select id="clean-outlier-strategy" class="text-input" style="margin-top: 0.3rem;">
+                                <option value="clip" selected>Clip / Winsorize to 1.5×IQR Boundary</option>
+                                <option value="drop">Drop Outlier Rows</option>
+                                <option value="keep">Keep Outliers Unaltered</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="input-label" style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                <input type="checkbox" id="clean-trim-spaces" checked style="width: 16px; height: 16px;">
+                                <b>Trim String Whitespace</b>
+                            </label>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Strips leading and trailing whitespace from text.</div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center;">
+                        <button class="btn-primary" id="btn-apply-cleaning">
+                            <span>⚡</span> Apply Cleaning Recipe
+                        </button>
+                        <button class="btn-primary" id="btn-download-cleaned" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);">
+                            <span>📥</span> Download Cleaned CSV
+                        </button>
+                        <button class="btn-primary" id="btn-reprofile-dashboard" style="background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);">
+                            <span>🔄</span> Re-profile Dashboard with Cleaned Data
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Cleaning Audit Report Card -->
+                <div class="card" id="clean-audit-card" style="display: none; background: #F8FAFC;">
+                    <div class="card-title">📋 Cleaning Audit Summary</div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-bottom: 1rem;" id="clean-audit-metrics"></div>
+                    <div style="font-size: 0.85rem; color: var(--text-secondary);" id="clean-audit-message"></div>
+                </div>
+
+                <!-- Cleaned Data Preview -->
+                <div class="card" id="clean-preview-card" style="display: none;">
+                    <div class="card-title">Cleaned Data Preview (First 20 Records)</div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead id="table-clean-head"></thead>
+                            <tbody id="table-clean-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 5: CUSTOM EXPLORER -->
             <div class="tab-pane" id="tab-explorer">
                 <div class="card">
                     <div class="card-title">Interactive Column Distribution Inspector</div>

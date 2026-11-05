@@ -13,14 +13,17 @@ import {
 
 import { recommendVisualizations, renderChart } from './charts.js';
 import { interpretWithGemini, downloadMarkdownReport } from './ai_interpreter.js';
+import { cleanDataset, exportCleanedCsv } from './cleaner.js';
 
 // Application State
 let currentData = [];
 let currentHeaders = [];
+let currentProfiles = [];
 let currentFilename = "";
 let currentOverview = null;
 let currentDomain = null;
 let currentInterpretation = null;
+let latestCleanedData = null;
 
 // Built-in Demo Sales Data (Embedded for instantaneous 1-click test without server requirements)
 const DEMO_SALES_CSV = `Date,Product,Region,Units Sold,Unit Price,Customer Rating,Revenue
@@ -51,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initDemoButton();
     initDownloadButton();
     initCustomExplorer();
+    initCleaningTab();
 });
 
 function initTabs() {
@@ -168,6 +172,7 @@ async function processDataset(data, headers, filename) {
     const overview = computeDatasetOverview(data, headers);
     currentOverview = overview;
     const profiles = computeColumnProfiles(data, headers);
+    currentProfiles = profiles;
     const summary = computeNumericSummary(data, headers, profiles);
     const warnings = computeDataQualityWarnings(data, headers, profiles);
     const domainContext = inferDomainContext(headers, data, profiles);
@@ -406,3 +411,88 @@ function initDownloadButton() {
     });
 }
 function initCustomExplorer() {}
+
+function initCleaningTab() {
+    const btnApply = document.getElementById("btn-apply-cleaning");
+    const btnDownload = document.getElementById("btn-download-cleaned");
+    const btnReprofile = document.getElementById("btn-reprofile-dashboard");
+
+    btnApply?.addEventListener("click", () => {
+        executeCleaning(false);
+    });
+
+    btnDownload?.addEventListener("click", () => {
+        if (!latestCleanedData) {
+            executeCleaning(false);
+        }
+        if (latestCleanedData) {
+            exportCleanedCsv(latestCleanedData, currentHeaders, `cleaned_${currentFilename.replace(/\.[^/.]+$/, "")}.csv`);
+        }
+    });
+
+    btnReprofile?.addEventListener("click", () => {
+        executeCleaning(true);
+    });
+}
+
+function executeCleaning(applyToDashboard = false) {
+    if (!currentData || currentData.length === 0) return;
+
+    const options = {
+        removeDuplicates: document.getElementById("clean-remove-dupes")?.checked ?? true,
+        imputeStrategy: document.getElementById("clean-impute-strategy")?.value || "median",
+        outlierStrategy: document.getElementById("clean-outlier-strategy")?.value || "clip",
+        trimWhitespace: document.getElementById("clean-trim-spaces")?.checked ?? true
+    };
+
+    const { cleanedData, audit } = cleanDataset(currentData, currentHeaders, currentProfiles, options);
+    latestCleanedData = cleanedData;
+
+    // Display Audit Summary Cards
+    const auditCard = document.getElementById("clean-audit-card");
+    const auditMetrics = document.getElementById("clean-audit-metrics");
+    const auditMsg = document.getElementById("clean-audit-message");
+    const previewCard = document.getElementById("clean-preview-card");
+
+    if (auditCard && auditMetrics) {
+        auditCard.style.display = "block";
+        auditMetrics.innerHTML = `
+            <div style="background: white; border: 1px solid var(--border-color); border-radius: 8px; padding: 0.8rem; text-align: center;">
+                <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">ROWS BEFORE / AFTER</div>
+                <div style="font-size: 1.25rem; font-weight: 800; color: var(--text-primary); margin-top: 0.2rem;">${audit.initialRows} ➔ ${audit.finalRows}</div>
+            </div>
+            <div style="background: white; border: 1px solid var(--border-color); border-radius: 8px; padding: 0.8rem; text-align: center;">
+                <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">DUPLICATES PURGED</div>
+                <div style="font-size: 1.25rem; font-weight: 800; color: var(--color-success); margin-top: 0.2rem;">${audit.duplicatesRemoved}</div>
+            </div>
+            <div style="background: white; border: 1px solid var(--border-color); border-radius: 8px; padding: 0.8rem; text-align: center;">
+                <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">MISSING VALUES IMPUTED</div>
+                <div style="font-size: 1.25rem; font-weight: 800; color: #0EA5E9; margin-top: 0.2rem;">${audit.missingValuesImputed}</div>
+            </div>
+            <div style="background: white; border: 1px solid var(--border-color); border-radius: 8px; padding: 0.8rem; text-align: center;">
+                <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700;">OUTLIERS TREATED</div>
+                <div style="font-size: 1.25rem; font-weight: 800; color: var(--color-warning); margin-top: 0.2rem;">${audit.outliersModified}</div>
+            </div>
+        `;
+
+        auditMsg.innerHTML = `✅ Successfully sanitized dataset. Initial missing cells: <b>${audit.initialMissing}</b>, Remaining: <b>${audit.finalMissing}</b>.`;
+    }
+
+    // Preview Table
+    if (previewCard) {
+        previewCard.style.display = "block";
+        const thead = document.getElementById("table-clean-head");
+        const tbody = document.getElementById("table-clean-body");
+        thead.innerHTML = `<tr>${currentHeaders.map(h => `<th>${h}</th>`).join("")}</tr>`;
+        tbody.innerHTML = cleanedData.slice(0, 20).map(r => {
+            return `<tr>${currentHeaders.map(h => `<td>${r[h] !== null && r[h] !== undefined ? r[h] : '<i style="color:#94A3B8">null</i>'}</td>`).join("")}</tr>`;
+        }).join("");
+    }
+
+    if (applyToDashboard) {
+        processDataset(cleanedData, currentHeaders, `cleaned_${currentFilename}`);
+        // Switch to Overview/AI tab
+        document.querySelector('.tab-btn[data-tab="tab-ai"]')?.click();
+    }
+}
+
